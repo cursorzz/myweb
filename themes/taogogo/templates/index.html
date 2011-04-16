@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block head_block %}
+<link rel="canonical" href="http://www.taogogo.info/" /> 
+<meta name="Description" content="{{ blog.subtitle|escape}}" />
+{% endblock %}
+
+{% block content %}
+ <div id="bodyLeft">
+	<!--循环开始-->
+	{% for entry in entries %}	
+	<div class="postList" id="post-{{ entry.post_id }}">
+		<h2><a href="/{{ entry.link }}" rel="bookmark" title="Permanent Link to  {{ entry.title }}">{{ entry.title }}</a></h2>
+		<div class="listEntry">{{entry|excerpt_more:"(..More)"}}</div>
+		<div class="listDetal">发布时间:<span class="listDate">{{ entry.date|datetz:"F jS, Y " }} </span> | Tags:{%for tag in entry.tags%}<a href="/tag/{{tag|urlencode}}">{{tag}}</a> {%endfor%} | 类别:{%for cate in entry.categories%} <a href="/category/{{cate.slug}}">{{cate.name}}</a> {%endfor%} | 浏览:({{entry.readtimes}}) | 评论:<span class="listComment"><a href="/{{entry.link}}#comments">({{entry.commentcount}})</a>{%if self.is_admin%} | <a href="{{entry.edit_url}}" class="alert">Edit</a>{%endif%}</span></div>
+	</div>
+	{% endfor %}
+	<!--循环结束-->
+	<div class="navigation">
+		{% if show_prev %}<div class="floatLeft"><a href="/page/{{ pageindex|add:"-1" }}">&laquo; 上一页</a></div>{% endif %}
+		{% if show_next %}<div class="floatRight"><a href="/page/{{ pageindex|add:"1" }}">下一页 &raquo;</a></div>{% endif %}
+	</div>
+ </div>
+{% include "sidebar.html" %}
+{% endblock %}

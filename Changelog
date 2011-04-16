@@ -1,0 +1,9 @@
+2011/4/16
+    change style.css in micolog's default theme
+        line 126, let top be fixed
+
+    change base.html in default theme
+        line 99, add GAE link
+
+    change sidebar.html in default theme
+        line 31, add fanfou show

@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+{%mf head%}
+<head>
+<title>{% block title %} {{ blog.title}}{% endblock %}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />{%mf metaAdd%}{%endmf%}
+<link rel="stylesheet" href="/themes/{{ blog.theme_name }}/style.css" type="text/css" />
+<script type="text/javascript" src="/themes/{{ blog.theme_name }}/tao.js"></script>
+<link rel="alternate" type="application/atom+xml" title="{{ blog.title }}" href="{{ blog.feedurl }}" />
+<link href="/static/wlwmanifest.xml" type="application/wlwmanifest+xml" rel="wlwmanifest"/>
+<link rel="icon" type="image/ico" href="/favicon.ico" />
+<link rel="pingback" href="/pingback" />
+{% block head_block %}{% endblock %}
+{%endmf%}
+</head>
+
+<body>
+<div id="taoBody">
+<!--title-->
+<div id="topTitle"><a href="{{ blog.baseurl }}" class="basetitle" title="{{ blog.title}}"><img id="logo"  width="136" height="57" src="/themes/taogogo/images/dot.gif" /></a><span>{{ blog.subtitle }}</span></div>
+<!--导航开始-->
+<div id="nav">
+		<li id="home"><a href="{{ blog.baseurl }}"  >首页</a></li>
+		{{self.m_list_pages}}{% block topmenu %}{% endblock %}{%mf nav_menu%}{%endmf%}
+		<div class="clear"></div>
+</div>
+<!--导航结束-->
+<!--正文开始 -->
+ {% block content %}{{content}}{% endblock %}
+<!--正文结束 -->
+<!--底部开始-->
+<div id="footer">CopyRight&copy;<a href="{{ blog.baseurl }}">{{ blog.title}}</a> | <a href="/e/wap">WAP</a> | <a href="/feed">Feed</a> | <a href="/sitemap">SiteMap</a> | <a href="/admin">{%if self.is_admin%}管理{% else %}登陆{%endif%}</a></div>
+<!--底部结束-->
+</div>
+</body>
+</html>
+<div id="adcontent1"style="display:none;"> 
+<script type="text/javascript"><!--
+google_ad_client = "pub-4674501411156281";
+google_ad_slot = "7556679092";
+google_ad_width = 250;
+google_ad_height = 250;
+//-->
+</script> 
+<script type="text/javascript"
+
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> 
+</script> 
+</div> 
+<script type="text/javascript" language="javascript"> 
+$('sitebarGoogleAds').innerHTML=$('adcontent1').innerHTML;
+//$('sbi').value="money";
+</script>
+{%mf footer%}{%endmf%}

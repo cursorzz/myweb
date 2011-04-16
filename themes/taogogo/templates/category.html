@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %} {{category.name}} - {{blog.title}} {% endblock %}
+{% block head_block %}
+<link rel="canonical" href="http://www.taogogo.info/category/{{category.slug}}" /> 
+<meta name="Keywords" content="{{category.name}}" />
+ <meta name="Description" content="{{category.name}}栏目的精品文章" />
+{% endblock %}
+{% block content %}
+<div id="bodyLeft">
+	 <h2> ☞ [<a href="/category/{{category.slug}}" rel="bookmark" title="Permanent Link to {{tag}}">{{category.name}}</a>]文章列表</h2>
+	{% for entry in entries %}
+	<div class="postList" id="post-{{ entry.post_id }}">
+	<h2><a href="{{ blog.baseurl }}/{{ entry.link }}" rel="bookmark" title="Permanent Link to  {{ entry.title }}">{{ entry.title }}</a></h2>
+	<div class="listEntry">
+	{{entry|excerpt_more:"(..More)"}}
+	</div>
+	<div class="listDetal">发布时间:<span class="listDate">{{ entry.date|datetz:"F jS, Y " }} </span> | Tags:{%for tag in entry.tags%}<a href="/tag/{{tag|urlencode}}">{{tag}}</a> {%endfor%} | 类别:{%for cate in entry.categories%} <a href="/category/{{cate.slug}}">{{cate.name}}</a> {%endfor%} | 浏览:({{entry.readtimes}}) | 评论:<span class="listComment"><a href="/{{entry.link}}#comments">({{entry.commentcount}})</a>{%if self.is_admin%} | <a href="{{entry.edit_url}}" class="alert">Edit</a>{%endif%}</span></div>
+	</div>
+	{% endfor %}
+	<div class="navigation">
+	{% if pager.prev %}<div class="alignleft"><a href="?page={{ pager.prev}}">&laquo; 上一页</a></div>{% endif %}
+	{% if pager.next %}<div class="alignright"><a href="?page={{ pager.next }}">下一页 &raquo;</a></div>{% endif %}
+	</div>
+</div>
+{% include "sidebar.html" %}
+{% endblock %}

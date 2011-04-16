@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %} {{entry.title}} - {{blog.title}} {% endblock %}
+{% block head_block %}
+{% if entry %}
+<link rel="canonical" href="http://www.taogogo.info/{{ entry.link }}" />
+{%if entry.strtags%}
+<meta name="Keywords" content="{{entry.strtags}}" />
+{%endif%}
+{%if entry.excerpt%}
+<meta name="Description" content="{{entry.excerpt}}" />
+{%endif%}
+{% endif %}
+{% endblock %}
+{% block content %}
+<!--taoBody开始-->
+  <div id="bodyLeft">
+    <div class="npPost">
+      {%for prev in entry.prev%}<a href="{{ blog.baseurl }}/{{prev.link}}" class="floatLeft"> « {{prev.title}}</a>{%endfor%} 
+	  {%for next in entry.next%} <a href="{{ blog.baseurl }}/{{next.link}}" class="floatRight">{{next.title}} » </a>{%endfor%} 
+	  <div class="clear"></div>
+    </div>
+    <!--正文开始-->
+    {% if entry %}
+    <div id="post">
+      <h2><a href="/{{ entry.link }}" rel="bookmark" title="Permanent Link to {{ entry.title }}">{{ entry.title }}</a></h2>
+	  <div id="postTime">{{entry.date|datetz:"F jS, Y"}} | 评论:({{entry.commentcount}})</div>
+	  	  <!--文章内容开始-->
+      <div id="content">{{ entry.content }}</div>
+	    <!--文章内容结束-->
+	  <div id="postDetal">
+	   <p>类别:{%for cate in entry.categories%} <a href="/category/{{cate.slug}}">{{cate.name}}</a> {%endfor%} | 关键字:  {%for tag in entry.tags%}<a href="/tag/{{tag|urlencode}}">{{tag}}</a> {%endfor%} | 阅读:({{entry.readtimes}}){%if self.is_admin%} | <a href="{{entry.edit_url}}" class="alert">编辑</a>  {%endif%}</p>
+	  </div>
+		<!--文章内容底部广告开始-->
+		<div class="contentBotAds">想收藏或者和大家分享这篇好文章→<span class="addthis_org_cn"><a href="#" title="收藏&amp;分享这篇好文章"><img src="static/images/addthis.gif" alt="" align="absmiddle" /></a></span>		</div>
+		<!--文章内容底部广告结束-->
+		 <!--相关阅读开始-->
+		<div id="relatePost">
+		{%if relateposts%}
+        <h4>相关阅读：</h4>
+        <ul>
+          {%for post in relateposts%}
+          <li><a href="{{ blog.baseurl }}/{{post.link}}">{{post.title}}</a></li>
+          {%endfor%}
+        </ul>
+        {%endif%}
+		</div>
+      <!--相关阅读结束-->
+    </div>
+	  <!--正文结束-->
+    {% include "comments.html" %} 
+	
+	{% else %}
+ <p>Sorry, no posts matched your criteria.</p>
+{% endif %}
+	</div>
+	<!--bodyLeft结束-->
+  	 {{ blog.theme }}
+      	{% include "sidebar.html" %}
+<!--结束-->
+
+
+{% endblock %}
