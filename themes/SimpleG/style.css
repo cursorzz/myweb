@@ -18,14 +18,14 @@ blockquote{ margin:15px auto 15px 20px; padding-left:15px; background:#f6f6f6; b
 #menu{ width:100%; background:#eeeeee; height:48px; border-bottom:1px solid #c6c6c6;border-top:1px solid #c6c6c6;}
 .nav{ width:952px; margin:0 auto; list-style:none;}
 .nav li { width:100px; display:block; float:left; border-left:1px solid #cfcfcf;border-right:1px solid #cfcfcf; margin-right:-1px;}
-.nav li a{padding:3px 0 7px 3px; width:97px;line-height:38px; color:#91b24f; font-weight:bold; text-decoration:none; display:block; font-size:14px;}
+.nav li a{padding:3px 0 7px 3px; width:97px;line-height:38px; color:#91b24f; font-weight:bold; text-decoration:none; display:block; font-size:16px;}
 .nav li a:first-letter{ text-transform:uppercase;}
-.nav li a:hover{ background:#333333;border-bottom:1px solid #91B24F;color: #f6f6f6 !important}
+.nav li a:hover{ background:#333333;border-bottom:1px solid #91B24F;color: #f6f6f6 !important;}
 .nav .rss{ float:right; margin-right:1px; }
 #main{ width:100%; border-top:1px solid #9c9c9c; overflow:hidden;}
 #content{ width:950px; margin:15px auto; overflow:hidden}
-#left-content{ width:730px; float:left; display:inline;}
-#part-content{ width:450px; float:left; display:inline; margin-top:8px;}
+#left-content{ width:950px; float:left; display:inline;}
+#part-content{ width:680px; float:left; display:inline; margin-top:8px;}
 #post-content em{ font-weight:bold; color:#333; font-size:14px; font-style: normal;}
 #post-title,#post-title-single{ position:relative; width:100%;border-bottom:1px solid #d2d2d2;height:25px;overflow:hidden; }
 #post-title a{  color:#333333; text-decoration:none; position:absolute;}
@@ -38,14 +38,14 @@ blockquote{ margin:15px auto 15px 20px; padding-left:15px; background:#f6f6f6; b
 #post-messages {border-bottom:1px solid #d2d2d2; padding-bottom:7px;}
 #post-messages a{ margin:0 5px; font-weight:normal;}
 .post-cm{ margin-left:10px;}
-#sidebar{ float:right; width:250px; margin:0 10px;}
+#sidebar{ float:right; width:250px; margin:0 0px;}
 #sidebar span{ color:#b5b5b5; padding-left:15px; font-weight:normal;}
 #relate-post { margin-bottom:10px;}
 #relate-post h3{ text-align:right;}
 #relate-post span{ color:#b5b5b5; font-weight:normal;padding-left:15px;}
 #ggsearch{ margin-top:13px;}
-#sidebar2{ float:right; width:210px; margin-top:5px; }
-#sidebar2-box{ width:100%; border:1px solid #B0CB85; background:#F6F6F6; border-left:none; border-right:none; margin-bottom:10px;}
+/*#sidebar2{ float:right; width:210px; margin-top:5px; }
+#sidebar2-box{ width:100%; border:1px solid #B0CB85; background:#F6F6F6; border-left:none; border-right:none; margin-bottom:10px;}*/
 #foot{ width:100%; background:#333333; height:40px; padding:10px 0;}
 .navigation {display: block;text-align: center;margin-top: 10px;margin-bottom: 10px;height:10px;}
 .alignright {float: right;}

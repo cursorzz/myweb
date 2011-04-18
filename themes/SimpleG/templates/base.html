@@ -19,13 +19,13 @@
 </div>
 <div id="menu">
 <ul class="nav">
-<li><a href="{{blog.baseurl}}/">Homepage</a>
+    <li><a href="{{blog.baseurl}}/"><center>home</center></a>
 </li>
-	{{self.m_list_pages}}
+<center>	{{self.m_list_pages}}<center>
     {% block topmenu %}{% endblock %}
 
 
-<li class="rss"><a href="{{blog.feedurl}}"><center>:-)订阅RSS</center>
+<li class="rss"><a href="{{blog.feedurl}}"><center>RSS</center>
 </a>
 </li>
 </ul>
