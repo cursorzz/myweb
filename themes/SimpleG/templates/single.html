@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %} {{entry.title}} - {{blog.title}} {% endblock %}
+{% block head_block %}
+{% if entry %}
+{%if entry.strtags%}<meta name="Keywords" content="{{entry.strtags}}">{%endif%}
+{%if entry.excerpt%} <meta name="Description" content="{{entry.excerpt}}">{%endif%}
+{% endif %}
+{% endblock %}
+{% block content %}
+<div id="left-content-single">
+
+{% if entry %}
+<div id="post-title-single">
+<h1><a href="/{{ entry.link }}" rel="bookmark" title="永久链接到{{entry.title}}">{{entry.title}}</a></h1>
+<div id="post-time">{{entry.date|datetz:"F jS, Y"}}</div>
+</div>
+<div id="post-content">
+<div id="post-messages-single"><span class="post-msg">{% if entry.strtags %}Tags: {%for tag in entry.tags%}<a href="/tag/{{tag|urlencode}}">{{tag}}</a> {%endfor%}{%endif%}  Posted in {%for cate in entry.categories%} <a href="/category/{{cate.slug}}">{{cate.name}}</a> {%endfor%}  {%if self.is_admin%}<a href="{{entry.edit_url}}">Edit</a>  {%endif%} </span><span class="post-comment">:-)<a href="#comment" >说点什么吧</a></span></div>
+
+{{ entry.content }}
+
+</div>
+
+	{%if relateposts%}
+    <div id="relate-post">
+                <h3>Relate Posts:<span>// 相关文章</span></h3>
+                  <ul>
+                {%for post in relateposts%}
+                  <li><a href="/{{post.link}}">{{post.title}}<span>{{entry.date|datetz:"F jS, Y"}}</span></a></li>
+                {%endfor%}
+                </ul>
+                </div>
+                {%endif%}
+<div id="post-messages-single">
+<div style="float:right;height:10px">
+{%for next in entry.next%}
+<a href="/{{next.link}}">{{next.title}}»</a>
+{%endfor%}
+</div>
+<div style="float:left">
+{%for prev in entry.prev%}
+<a href="/{{prev.link}}">«{{prev.title}}</a>
+{%endfor%}
+</div>
+</div>
+
+<div id="comment">
+{% include "comments.html" %}
+
+</div>
+</div>
+
+
+{%endif%}
+{% include "sidebar.html" %}
+{% endblock %}

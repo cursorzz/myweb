@@ -1,0 +1,105 @@
+<script src="/themes/{{ blog.theme_name }}/comment.js" type="text/javascript"></script>
+
+<!-- You can start editing here. -->
+<div id="comment-template" class="solo">
+{% if comments %}
+<h3 id="comments">
+  <p>{{entry.comments.count}} 条评论</p>
+</h3>
+<ol class="commentlist">
+		{% for comment in comments %}
+		<li class="comment round" id="comment-{{comment.key.id}}">
+				<div class="comment-author vcard" >
+							<div class="the_avatar round-10">
+								<img alt="" src="{{comment.gravatar_url}}" class="avatar avatar-32 photo" height="32" width="32" />
+							</div>
+					<div class="comment-meta commentmetadata">
+						<div class="comment_head">
+							<div class="commentmetadata">
+								<span class="name">
+								{%if comment.weburl %}
+									<a id="comment-{{comment.key.id}}" class="url" target="_blank" href="{{comment.weburl}}">{{comment.author}}</a>
+									{% else %}{{comment.author}}{%endif%}
+								</span>&nbsp;
+								<!-- <span class="floor">#{{comment.no}} F</span> -->
+							<span class="time">{{comment.date|datetz:"Y-m-d"}} @ {{comment.date|datetz:"H:i"}}
+							</span>
+							{% if comment.reply_notify_mail %}
+							<a class="quote" title="reply @{{comment.author}}" onclick="return backcomment('{{comment.author}}',{{comment.key.id}});" style="cursor: pointer;" class="reply" href = "#commentform"><span style = "color:#ff0000">回复</span></a></div>
+							{% else %}
+							<a class="quote icon" title="reply @{{comment.author}}" onclick="return backcomment('{{comment.author}}',{{comment.key.id}});" style="cursor: pointer;" class="reply" href = "#commentform"><span>回复</span></a></div>
+							{% endif %}
+						</div>
+						<div class="clear">
+						</div>
+						<div class="content">{{comment.content}}</div>
+					</div>
+					</div>
+			</li>
+			{% endfor %}
+</ol>
+<div id="s_msg" style="display:none;color:red">提交评论中...</div>
+	<div id="commentnavi" class="box icon content">
+	<span class="pages icon">评论分页：</span>
+	<span id="cpager" class = "current"><div class="wp-pagenavi">{{comments_nav.nav}}</div></span>
+	</div>
+	{% else %}
+	<ul id="thecomments"></ul>
+	{% endif %}
+{% if entry.allow_comment %}
+<div id="respond">
+  <div class="respond-in">
+    <h3>
+    </h3>
+	  <form action="/post_comment" method="post" id="commentform">
+      <p class="welcome-new">
+        <input type="text" name="author" id="author" value="" size="22" tabindex="1" class ="round" />
+        <label for="author">姓名
+        </label>
+      </p>
+      <p class="welcome-new">
+        <input type="text" name="email" id="email" value="" size="22" tabindex="2"  class ="round" />
+        <label for="email">邮件（保密）
+        </label>
+      </p>
+      <p class="welcome-new">
+        <input type="text" name="url" id="url" value="" size="22" tabindex="3" class ="round"/>
+        <label for="url">网站</label>
+      </p>
+	  <p class="welcome-new">
+        <input type="hidden" name="checknum" id="checknum" value="{{checknum1}}+{{checknum2}}" tabindex="4" />
+		<input type="text" name="checkret" id="checkret"  class="textfield round" value="" size="22" tabindex="4" />
+		<label for="checkret">验证码</label>
+		{%ifequal blog.comment_check_type 1%}
+		<iframe src="/checkcode/"  style="width:80px;height:20px;border:0;"SCROLLING=no></iframe>
+		{%endifequal%}
+		{%ifequal blog.comment_check_type 2%}
+		<div id="checkarea" style="padding-bottom:15px">
+		<div style="float:left;margin-right:8px;">
+			<img id='checkimg' src='/checkimg/' style="border:0px;padding:0px;" title='Click to change image' onclick="reloadCheckImage();"/>
+		</div>
+		
+		</div>
+		{%endifequal%}
+		{%ifequal blog.comment_check_type 3%}
+        <label for="checkret">{{checknum1}}+{{checknum2}} = ?，请计算下，谢谢！</label>
+		{%endifequal%}
+      </p>
+      <p>
+        <textarea name="comment" id="comment" cols="50%" rows="10" tabindex="4" class ="round"></textarea>
+      </p>
+      <p>
+        <input name="submit" type="submit" id="submit" class="comment_submit" tabindex="5" value="Submit" />
+		<input type="hidden" name="key" value="{{entry.key}}" />
+		<input type="hidden" name="useajax" value="1" />
+		<input name="reply_notify_mail" id="reply_notify_mail" tabindex="7" style="width: auto;" type="checkbox" />
+		<label for="reply_notify_mail">如果有回复，通过邮件通知我。</label>
+      </p>
+    </form>
+  </div>
+</div></div>
+{% else %}
+<div id="comment-template" class="solo">
+<h3 id="comments">评论已关闭。</h3>
+</div></div>
+{% endif %}

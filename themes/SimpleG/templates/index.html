@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block content%}
+<div id="left-content">
+<div id="part-content">
+{% if entries %}
+{% for entry in entries %}
+<!--post-->
+<div id="post-home">
+<div id="post-title">
+<h1><a href="/{{ entry.link }}" rel="bookmark" title="永久链接到{{entry.title}}">{{entry.title}}</a></h1>
+<div id="post-time">{{entry.date|datetz:"F jS, Y"}}</div>
+</div>
+<div id="post-content">
+{{entry|excerpt_more:"(..More)"}}
+
+</div>
+
+<div id="post-messages">{% if entry.strtags %}Tags: {%for tag in entry.tags%}<a href="/tag/{{tag|urlencode}}">{{tag}}</a> {%endfor%}{%endif%}  Posted in {%for cate in entry.categories%} <a href="/category/{{cate.slug}}">{{cate.name}}</a> {%endfor%}  {%if self.is_admin%}<a href="{{entry.edit_url}}">Edit</a>  {%endif%} </div>
+</div>
+<!-- -->
+{% endfor %}
+<div class="navigation">
+			{% if show_prev %}
+			<div class="alignleft"><a href="/page/{{ pageindex|add:"-1" }}">&laquo; 上一页</a></div>
+			{% endif %}
+			{% if show_next %}
+			<div class="alignright"><a href="/page/{{ pageindex|add:"1" }}">下一页 &raquo;</a></div>
+			{% endif %}
+		</div>
+{% else %}
+<h2>Not Found</h2>
+<p>Sorry, but you are looking for something that isn't here.</p>
+{% endif %}
+</div>
+{% include "sidebar.html" %}
+</div>
+{% include "sidebar2.html" %}
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

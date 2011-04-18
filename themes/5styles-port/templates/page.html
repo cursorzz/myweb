@@ -1,0 +1,44 @@
+﻿{% extends "base.html" %}
+
+{% block title %} {{entry.title|escape}} - {{blog.title|escape}} {% endblock %}
+
+{% block head_block %}
+
+{% if entry %}
+{%if entry.strtags%}<meta name="Keywords" content="{{entry.strtags|escape}}" />{%endif%}
+{%if entry.excerpt%} <meta name="Description" content="{{entry.excerpt|escape}}" />{%endif%}
+{% endif %}
+
+{% endblock %}
+
+
+{% block content %}
+
+
+	<div id="main">
+		<div id="maincontent"><div class="forFlow">
+		{% if entry %}
+			<div class="post" id="post-{{entry.key}}">
+				<h2 class="post-title"><a href="/{{entry.link|escape}}" rel="bookmark" title="{{ entry.title|escape }}">{{ entry.title|escape }}</a></h2>
+				<div class="postmetadata-top">
+					<span class="post-comments"><a href="/{{entry.link|escape}}#comments">{{entry.commentcount}} 条评论</a></span>
+					<span class="post-date">{{entry.date|datetz:"Y/m/d H:i"}}</span>
+					<span class="post-views"><a href="/{{entry.link|escape}}">{{entry.readtimes}} 次阅读</a></span>
+				</div>
+				<div class="entry">
+					{{ entry.content }}
+				</div>
+			</div>
+
+		{% include "comments.html" %}
+		
+		{% else %}
+			<h2 class="center">Not Found</h2>
+			<p class="center">不好意思，您所查看的内容不再这里，您可以通过侧栏搜索工具查一下。</p>
+		{% endif %}
+		
+		</div></div>
+		
+		{% include "sidebar.html" %}
+	</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+<div id="sidebar">
+<div id="ggsearch">
+<form method="get" id="searchform" action="http://www.google.com/search">
+		<input type="text" value="输入关键字按回车搜索" onfocus="if (this.value == '输入关键字按回车搜索') {this.value = '';}" onblur="if (this.value == '') {this.value = '输入关键字按回车搜索';}" name="as_q" id="s" />
+	
+		<input name="as_sitesearch" value="{{blog.domain}}" type="hidden">
+
+		</form>
+</div>
+<div id="category">
+<h3>Categories<span>//&nbsp;分类</span></h3>
+ <ul>
+ 	{%for cate in categories%}
+  <li>	<a href="/category/{{cate.slug}}">{{cate.name}}({{cate.count}})</a></li>
+ 	{%endfor%}
+ 	</ul>
+</div> 
+<div id="new-page">
+<h3>Recent Comments<span>//&nbsp;最新评论</span></h3>
+ <ul>
+        {% for comment in recent_comments %}
+        <li><a href="/{{comment.entry.link}}#comment-{{comment.key.id}}">{{comment.author}}:{{comment.shortcontent}}...</a> </li>
+        {%endfor%}
+ 	</ul>
+</div>
+<div id="new-post">
+ <h3>Recent Posts<span>//&nbsp;最新文章</span></h3>
+        <ul>
+        {% for entry in blog.recentposts %}
+        <li><a href="/{{entry.link}}">{{entry.title}}</a></li>
+        {%endfor%}
+        </ul>
+</div>
+<div id="link">
+<h3>Blog roll<span>//&nbsp;友情链接</span></h3>
+<ul>
+{%for link in blogroll%}
+<li><a href="{{link.href}}">{{link.linktext}}</a></li>
+{%endfor%}
+
+</ul>
+</div>
+</div>
+
+
+
+

@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8;" />
+<title>{% block title %} {{ blog.title}}{% endblock %}</title>
+<link rel="stylesheet" href="/themes/{{ blog.theme_name }}/style.css" type="text/css" media="screen" />
+<link rel="alternate" type="application/rss+xml" title="{{ blog.title }} RSS Feed" href="{{ blog.feedurl }}" />
+<link href="/static/wlwmanifest.xml" type="application/wlwmanifest+xml" rel="wlwmanifest"/>
+{% block head_block %}{% endblock %}
+</head>
+<body>
+<div id="header">
+<div id="header_m">
+<div id="logo">
+<h1><a href="{{blog.baseurl}}/" title="{{blog.title}}">{{blog.title}}</a></h1>
+</div>
+<div id="description">{{blog.subtitle}}</div>
+</div>
+</div>
+<div id="menu">
+<ul class="nav">
+<li><a href="{{blog.baseurl}}/">Homepage</a>
+</li>
+	{{self.m_list_pages}}
+    {% block topmenu %}{% endblock %}
+
+
+<li class="rss"><a href="{{blog.feedurl}}"><center>:-)订阅RSS</center>
+</a>
+</li>
+</ul>
+</div>
+<div id="main">
+<div id="content">
+{%block content %}{%endblock%}
+
+</div>
+</div>
+<div id="foot">
+<div id="foot_m">
+
+<p>除非另有声明，本站文章采用知识共享署名-非商业协议CC2.5进行许可。转载请注明来自<a href="{{blog.baseurl}}/" title="{{blog.title}}">{{blog.title}}</a></p>
+<p>Powered by GAE,Google Friend Connect,<a href="http://xuming.net">micolog</a>&nbsp;Theme by <a href="http://www.g9net.com">wlsy</a></p>
+</div>
+</div>
+
+</body>
+</html>

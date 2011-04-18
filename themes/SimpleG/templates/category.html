@@ -1,0 +1,34 @@
+﻿{% extends "base.html" %}
+{% block title %} {{category.name}} | {{blog.title}} {% endblock %}
+{% block content%}
+<div id="left-content">
+<div id="part-content">
+
+
+<h2>{{category.name}}</h2>
+<ul class="cate">
+{% for entry in entries %}
+<li> <a href="/{{entry.link}}">{{entry.title}}<br /><span>{{entry.date|datetz:"F jS, Y"}}&nbsp;{% if entry.strtags %}Tags: {%for tag in entry.tags%}{{tag}}{%endfor%}{%endif%} </span></a></li>
+{% endfor %}
+</ul>
+
+
+
+
+<div class="navigation">
+			{% if pager.prev %}
+			<div class="alignleft"><a href="?page={{ pager.prev}}">&laquo; 上一页</a></div>
+			{% endif %}
+			{% if pager.next %}
+			<div class="alignright"><a href="?page={{ pager.next }}">下一页 &raquo;</a></div>
+			{% endif %}
+		</div>
+</div>
+{% include "sidebar.html" %}
+</div>
+{% include "sidebar2.html" %}
+ {% endblock %}
+
+
+
+

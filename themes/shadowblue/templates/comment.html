@@ -1,0 +1,28 @@
+		<ol class="commentlist">
+		<li class="comment round" id="comment-{{comment.key.id}}">
+				<div class="comment-author vcard" >
+							<div class="the_avatar round-10">
+								<img alt="" src="{{comment.gravatar_url}}" class="avatar avatar-32 photo" height="32" width="32" />
+							</div>
+					<div class="comment-meta commentmetadata">
+						<div class="comment_head">
+							<div class="commentmetadata">
+								<span class="name">
+								{%if comment.weburl %}
+									<a id="comment-{{comment.key.id}}" class="url" target="_blank" href="{{comment.weburl}}">{{comment.author}}</a>
+									{% else %}{{comment.author}}{%endif%}
+								</span>&nbsp;
+								<!-- <span class="floor">#{{comment.no}} F</span> -->
+							<span class="time">{{comment.date|datetz:"Y-m-d"}} @ {{comment.date|datetz:"H:i"}}
+							</span>
+						</div>
+						<div class="clear">
+						</div>
+						<div class="content">
+							<div id="quote-{{comment.key.id}}"  class="comment_text">{{comment.content}}
+							</div>
+						</div>
+					</div>
+					</div>
+			</li>
+			</ol>
