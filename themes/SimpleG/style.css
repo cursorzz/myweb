@@ -15,22 +15,22 @@ blockquote{ margin:15px auto 15px 20px; padding-left:15px; background:#f6f6f6; b
 #logo a{ line-height:65px;font-size:160%;color:#333; float:left; text-decoration:none;}
 #logo a:hover{ color:#91B24F; text-decoration:none;}
 #description{ margin-top:30px; margin-left:10px; float:left; color:#91b24f; }
-#menu{ width:100%; background:#eeeeee; height:48px; border-bottom:1px solid #c6c6c6;border-top:1px solid #c6c6c6;}
+#menu{width:100%; background:#eeeeee; height:48px; border-bottom:1px solid #c6c6c6;border-top:1px solid #c6c6c6; box-shadow:0 0 5px; -moz-box-shadow:0 0 5px; -webkit-box-shadow:0 0 5px;}
 .nav{ width:952px; margin:0 auto; list-style:none;}
 .nav li { width:100px; display:block; float:left; border-left:1px solid #cfcfcf;border-right:1px solid #cfcfcf; margin-right:-1px;}
-.nav li a{padding:3px 0 7px 3px; width:97px;line-height:38px; color:#91b24f; font-weight:bold; text-decoration:none; display:block; font-size:16px;}
+.nav li a{padding:3px 0 7px 3px; width:97px;line-height:38px; color:#91b24f; font-weight:bold; text-decoration:none; display:block; font-size:16px;-webkit-transition:background 0.5s;-moz-transition:background 0.5s}
 .nav li a:first-letter{ text-transform:uppercase;}
 .nav li a:hover{ background:#333333;border-bottom:1px solid #91B24F;color: #f6f6f6 !important;}
 .nav .rss{ float:right; margin-right:1px; }
-#main{ width:100%; border-top:1px solid #9c9c9c; overflow:hidden;}
-#content{ width:950px; margin:15px auto; overflow:hidden}
+#main{ width:100%; border-top:1px solid #9c9c9c; overflow:hidden;background-color:#EEEEEE;}
+#content{ background-color:#FFFFFF; width:950px; margin:5px auto; overflow:hidden; border:1px solid #C0BEBE; border-radius:7px; -moz-border-radius:7px; -webkit-border-radius:7px; box-shadow:0 0 10px #857E7E; -moz-box-shadow:0 0 10px #857E7E; -webkit-box-shadow:0 0 10px #857E7E; }
 #left-content{ width:950px; float:left; display:inline;}
-#part-content{ width:680px; float:left; display:inline; margin-top:8px;}
+#part-content{ width:680px; float:left; display:inline; margin-top:8px;margin-left:8px}
 #post-content em{ font-weight:bold; color:#333; font-size:14px; font-style: normal;}
 #post-title,#post-title-single{ position:relative; width:100%;border-bottom:1px solid #d2d2d2;height:25px;overflow:hidden; }
 #post-title a{  color:#333333; text-decoration:none; position:absolute;}
-#post-title a:hover{ color:#91b24f; }
-#post-time{ right:0; position:absolute; font-size:9px; top:2px; color:#91b24f}
+#post-title a:hover{ color:#91b24f; text-decoration:underline;}
+#post-time{ right:0; position:absolute; font-size:12px; top:2px; color:#91b24f}
 #post-content { margin: 5px 0;}
 #post-content a,#post-messages a,.alignright a,.alignleft a,#post-messages-single a,.commentlist li a{color:#91b24f;}
 #post-content a:hover,#post-messages a:hover,.alignright a:hover,.alignleft a:hover,#post-messages-single a:hover,.commentlist li a:hover{ background:#91b24f; color:#ffffff; text-decoration:none;}
@@ -38,7 +38,7 @@ blockquote{ margin:15px auto 15px 20px; padding-left:15px; background:#f6f6f6; b
 #post-messages {border-bottom:1px solid #d2d2d2; padding-bottom:7px;}
 #post-messages a{ margin:0 5px; font-weight:normal;}
 .post-cm{ margin-left:10px;}
-#sidebar{ float:right; width:250px; margin:0 0px;}
+#sidebar{ float:right; width:250px; margin:0 4px 10px;}
 #sidebar span{ color:#b5b5b5; padding-left:15px; font-weight:normal;}
 #relate-post { margin-bottom:10px;}
 #relate-post h3{ text-align:right;}
@@ -47,7 +47,7 @@ blockquote{ margin:15px auto 15px 20px; padding-left:15px; background:#f6f6f6; b
 /*#sidebar2{ float:right; width:210px; margin-top:5px; }
 #sidebar2-box{ width:100%; border:1px solid #B0CB85; background:#F6F6F6; border-left:none; border-right:none; margin-bottom:10px;}*/
 #foot{ width:100%; background:#333333; height:40px; padding:10px 0;}
-.navigation {display: block;text-align: center;margin-top: 10px;margin-bottom: 10px;height:10px;}
+.navigation {display: block;text-align: center;margin-top: 10px;margin-bottom: 15px;height:10px;}
 .alignright {float: right;}
 .alignleft {float: left}
 #sidebar ul,#relate-post ul{ list-style:none; margin:0; padding:0;}
@@ -62,7 +62,7 @@ blockquote{ margin:15px auto 15px 20px; padding-left:15px; background:#f6f6f6; b
 .cate li a:first-letter{ text-transform:uppercase;}
 .cate li a span{ font-weight:normal; color:#91b24f;}
 .cate li a:hover{border-left:1px solid #91b24f; background:#eee;}
-#left-content-single{ width:648px; display:inline; float:left; margin-top:8px;}
+#left-content-single{ width:648px; display:inline; float:left; margin-top:8px; margin-left:8px}
 #post-title-single h1 a{ color:#91b24f;text-decoration:none;}
 #post-messages-single{ color:#717171; margin-bottom:5px; width:100%; margin-bottom:5px; height:20px;}
 #error{ font-size:14px;}
@@ -93,4 +93,4 @@ h3#respond{ margin-bottom:10px;}
 #comment:focus,#comment.sffocus { color: #000; border: 1px solid #afc9de; width:520px; display:block; padding: 4px; margin-bottom: 0.6em; background: #fff url(images/inputbg.gif) repeat-x top left;}
 #commentt{ width:620px;}
 #checkarea{ margin-bottom:3px;}
-#post-home{ margin-bottom:20px; overflow:hidden;}
+#post-home{ margin-bottom:10px; overflow:hidden; margin-left:8px}
